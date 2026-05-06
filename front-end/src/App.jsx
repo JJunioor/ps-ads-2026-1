@@ -1,4 +1,6 @@
 // import './App.css'
+import React from 'react'
+
 import { BrowserRouter } from 'react-router-dom'
 
 
@@ -18,30 +20,53 @@ import FooterBar from './ui/FooterBar'
 
 import AppRoutes from './routes/AppRoutes'
 
+import AuthContext from './contexts/AuthContext'
+
 
 function App() {
- return (
-   <>
-     <ThemeProvider theme={theme}>
-      
-       <CssBaseline />
-      
-       <BrowserRouter>
-         <HeaderBar />
+
+  const [authState, setAuthState] = React.useState({
+    authUser: null,
+    redirectTo: null
+  })
+  const {
+    authUser,
+    redirectTo
+  } = authState
+
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+
+        <CssBaseline />
+
+        <BrowserRouter>
+
+          {/* Qualquer componente carregado entre <AuthContext.Provider> e
+        </AuthContext.Provider> poderá acessar os dados compartilhados
+        por AuthProvider por meio do 'value' */}
 
 
-         {/* Dentro da prop "sx", "m" significa "margin" */}
-         <Box id="innerRoot" sx={{ m: '48px 24px' }}>
-           <AppRoutes />
-         </Box>
+          <AuthContext.Provider value={{ authState, setAuthState }} >
+
+            <HeaderBar />
 
 
-         <FooterBar />
-       </BrowserRouter>
-    
-     </ThemeProvider>
-   </>
- )
+            {/* Dentro da prop "sx", "m" significa "margin" */}
+            <Box id="innerRoot" sx={{ m: '48px 24px' }}>
+              <AppRoutes />
+            </Box>
+
+
+            <FooterBar />
+
+          </AuthContext.Provider>
+
+        </BrowserRouter>
+
+      </ThemeProvider>
+    </>
+  )
 }
 
 
