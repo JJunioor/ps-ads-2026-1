@@ -13,29 +13,29 @@ export default function MainMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };<MenuItem
-          onClick={handleClose}
-          component={Link}
-          to="/autora"
-        >
-          
-          Sobre a autora
-        </MenuItem>
+  }; <MenuItem
+    onClick={handleClose}
+    component={Link}
+    to="/autora"
+  >
+
+    Sobre a autora
+  </MenuItem>
 
   return (
     <div>
       <IconButton
-       id="basic-button"
-       aria-controls={open ? 'basic-menu' : undefined}
-       aria-haspopup="true"
-       aria-expanded={open ? 'true' : undefined}
-       onClick={handleClick}
-       edge="start"
-       color="inherit"
-       aria-label="menu" sx={{ mr: 2 }}
-     >
-       <MenuIcon />
-        </IconButton>
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        edge="start"
+        color="inherit"
+        aria-label="menu" sx={{ mr: 2 }}
+      >
+        <MenuIcon />
+      </IconButton>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -55,7 +55,7 @@ export default function MainMenu() {
         >
           Página inicial
         </MenuItem>
-      
+
         <MenuItem
           onClick={handleClose}
           component={Link}
@@ -72,8 +72,25 @@ export default function MainMenu() {
         >
 
           Listagem de clientes
-        </MenuItem>        
-        
+        </MenuItem>
+
+        <MenuItem
+          onClick={handleClose}
+          component={Link}
+          to="/users"
+        >
+          Listagem de usuários
+        </MenuItem>
+
+
+        <MenuItem
+          onClick={handleClose}
+          component={Link}
+          to="/users/new"
+        >
+          Cadastro de usuários
+        </MenuItem>
+
       </Menu>
     </div>
   );

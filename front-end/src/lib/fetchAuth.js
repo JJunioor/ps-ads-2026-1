@@ -23,7 +23,7 @@ function buildOptions(method = 'GET', body = null) {
             'Content-Type': 'application/json; charset=UTF-8'
         },
         // Pede para o back-end enviar cookies
-        // credentials: 'include'
+        credentials: 'include'
     }
 
 
@@ -31,15 +31,15 @@ function buildOptions(method = 'GET', body = null) {
     if (body) options.body = JSON.stringify(body)
 
 
-    // Verifica se existe um token gravado no localStorage
-    // e o inclui nos headers, se for o caso
-    const token = window.localStorage.getItem(import.meta.env.VITE_AUTH_TOKEN_NAME)
+    // // Verifica se existe um token gravado no localStorage
+    // // e o inclui nos headers, se for o caso
+    // const token = window.localStorage.getItem(import.meta.env.VITE_AUTH_TOKEN_NAME)
 
 
-    // console.log({token})
+    // // console.log({token})
 
 
-    if (token) options.headers.authorization = `Bearer ${token}`
+    // if (token) options.headers.authorization = `Bearer ${token}`
 
 
     return options
